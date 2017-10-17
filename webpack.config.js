@@ -6,7 +6,19 @@ module.exports = {
     path: __dirname+'/build',
     filename: 'bundle.js'
   },
+  module: {
+    rules: {
+      test: /\.scss$/,
+      use: [
+        "style-loader",
+        "css-loader",
+        "sass-loader"
+      ]
+    },
+  },
+  devtool: 'eval-source-map',
   devServer: {
-    contentBase: './build'
+    contentBase: './build',
+    inline: true
   }
 };
