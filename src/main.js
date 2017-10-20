@@ -1,3 +1,5 @@
+require('./app.scss');
+
 var textContent = require('./content');
 
 function appendListItem() {
@@ -11,3 +13,10 @@ function appendListItem() {
 
 var button = document.getElementById("add_button");
 button.addEventListener("click", appendListItem);
+
+if (module.hot) {
+  module.hot.accept();
+  module.hot.dispose(function() {
+    button.removeEventListener("click", appendListItem);
+  });
+}
